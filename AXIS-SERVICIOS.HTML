@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANUAL DE VENTAS & PORTAFOLIO: BASE 64 & AXIS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Montserrat:wght@300;400;600;800&family=Share+Tech+Mono&family=Teko:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           RESET & ESTRUCTURA GLOBAL
+           ========================================= */
+        :root {
+            /* BASE 64 PALETTE */
+            --b64-bg: #0a0a0a;
+            --b64-blue: #0078D4;      /* Power Automate */
+            --b64-purple: #982575;    /* Power Apps */
+            --b64-yellow: #F2C811;    /* Power BI */
+            
+            /* AXIS PALETTE */
+            --axis-bg: #050505;
+            --axis-teal: #00e5ff;     /* Identidad AXIS */
+            --axis-dark-teal: #004d40;
+            
+            --text-main: #e0e0e0;
+            --text-muted: #9ca3af;
+        }
+
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: #000; color: var(--text-main); overflow-x: hidden; }
+        
+        /* Navegación */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(0,0,0,0.9); border-bottom: 1px solid #333;
+            display: flex; justify-content: center; padding: 10px; gap: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .nav-btn {
+            padding: 8px 20px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; font-size: 14px;
+            border: 1px solid #444; border-radius: 4px; transition: 0.3s;
+        }
+        .btn-b64 { color: #fff; border-color: var(--b64-purple); }
+        .btn-b64:hover { background: var(--b64-purple); box-shadow: 0 0 15px var(--b64-purple); }
+        .btn-axis { color: #fff; border-color: var(--axis-teal); }
+        .btn-axis:hover { background: var(--axis-teal); color: #000; box-shadow: 0 0 15px var(--axis-teal); }
+
+        /* Estructura */
+        .brand-section { padding: 80px 20px; min-height: 100vh; position: relative; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* Tipografía */
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; margin-top: 0; }
+        .mono { font-family: 'Share Tech Mono', monospace; }
+        .section-title { font-size: clamp(24px, 4vw, 36px); border-left: 5px solid; padding-left: 15px; margin-bottom: 40px; }
+        
+        /* Tablas */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; background: rgba(255,255,255,0.03); }
+        .comparison-table th { padding: 15px; text-align: left; font-family: 'Orbitron'; background: rgba(255,255,255,0.05); }
+        .comparison-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); vertical-align: top; }
+        .comparison-table tr:hover { background: rgba(255,255,255,0.05); }
+
+        /* Grids */
+        .sales-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .sales-card { background: rgba(20,20,30,0.5); padding: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .sales-card:hover { transform: translateY(-5px); background: rgba(30,30,40,0.6); }
+        .sales-card h4 { font-family: 'Teko'; font-size: 26px; margin-bottom: 10px; }
+        .pitch-text { font-style: italic; color: #ccc; border-left: 3px solid #555; padding-left: 10px; margin-top: 15px; background: rgba(255,255,255,0.05); padding: 10px; }
+
+        /* Nuevos Estilos para Inducción */
+        .profile-badge { display: inline-block; padding: 2px 8px; font-size: 10px; border-radius: 4px; border: 1px solid; margin-bottom: 5px; }
+        .hook-box { margin-top: 20px; border-top: 1px dashed #555; padding-top: 10px; }
+        .hook-label { color: #fff; font-weight: bold; font-size: 12px; display: block; margin-bottom: 5px; }
+
+        /* Estilos BASE 64 */
+        #base64 { background-image: linear-gradient(to bottom, #0a0a0a, #150510); border-bottom: 5px solid var(--b64-purple); }
+        .b64-highlight { background: linear-gradient(90deg, var(--b64-blue), var(--b64-purple), var(--b64-yellow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Estilos AXIS */
+        #axis { background-image: linear-gradient(to bottom, #020205, #001014); }
+        .axis-highlight { color: var(--axis-teal); text-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+
+        /* Separador */
+        .brand-divider { height: 100px; background: repeating-linear-gradient(45deg, #000, #000 10px, #222 10px, #222 20px); display: flex; align-items: center; justify-content: center; border-top: 1px solid #444; border-bottom: 1px solid #444; }
+        .divider-text { background: #000; padding: 10px 30px; border: 1px solid #555; font-family: 'Share Tech Mono'; }
+
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a href="#base64" class="nav-btn btn-b64"><i class="fa-solid fa-users"></i> BASE 64 (STAFFING)</a>
+        <a href="#axis" class="nav-btn btn-axis"><i class="fa-solid fa-layer-group"></i> AXIS (SOLUCIONES)</a>
+    </div>
+
+    <section id="base64" class="brand-section">
+        <div class="container">
+            
+            <div style="text-align: center; margin-bottom: 80px; padding-top: 40px;">
+                <h1 style="font-size: 80px; margin-bottom: 10px; letter-spacing: 5px;">BASE 64</h1>
+                <p class="mono" style="font-size: 20px; color: var(--b64-blue);">STAFFING ESPECIALIZADO EN <span class="b64-highlight">MICROSOFT POWER PLATFORM</span></p>
+                <p style="color: #888; max-width: 600px; margin: 20px auto; font-size: 14px;">
+                    <strong>OBJETIVO:</strong> Proveer talento técnico validado en 48 horas para eliminar la carga administrativa y de selección del cliente.
+                </p>
+            </div>
+
+            <h2 class="section-title" style="border-color: var(--b64-blue); color: #fff;">1. NUESTROS MODELOS (QUÉ VENDEMOS)</h2>
+            <div class="sales-grid">
+                <div class="sales-card" style="border-top: 4px solid var(--b64-blue);">
+                    <h3 style="color: var(--b64-blue);">STAFF AUGMENTATION</h3>
+                    <p class="mono">Extensión de equipo</p>
+                    <p style="font-size: 13px; color: #aaa;">El talento es contratado por Base 64 pero trabaja bajo las órdenes directas del cliente.</p>
+                    <div class="hook-box">
+                        <span class="hook-label text-blue"><i class="fa-solid fa-bullseye"></i> IDEAL PARA:</span>
+                        <ul style="font-size: 12px; color: #ddd; padding-left: 20px; margin: 5px 0;">
+                            <li>Cubrir licencias de maternidad/médicas.</li>
+                            <li>Picos de trabajo temporales (3-6 meses).</li>
+                            <li>Empresas con "headcount" congelado.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sales-card" style="border-top: 4px solid var(--b64-purple);">
+                    <h3 style="color: var(--b64-purple);">SQUADS (TRIBUS)</h3>
+                    <p class="mono">Células Autónomas</p>
+                    <p style="font-size: 13px; color: #aaa;">Entregamos una "caja negra": PM + Devs + QA. El cliente pide un producto, la tribu lo entrega.</p>
+                    <div class="hook-box">
+                        <span class="hook-label" style="color:var(--b64-purple)"><i class="fa-solid fa-bullseye"></i> IDEAL PARA:</span>
+                        <ul style="font-size: 12px; color: #ddd; padding-left: 20px; margin: 5px 0;">
+                            <li>Startups sin director de tecnología.</li>
+                            <li>Empresas no tecnológicas (Retail, Agro).</li>
+                            <li>Desarrollo de MVPs rápidos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sales-card" style="border-top: 4px solid var(--b64-yellow);">
+                    <h3 style="color: var(--b64-yellow);">HEADHUNTING IT</h3>
+                    <p class="mono">Reclutamiento Puro</p>
+                    <p style="font-size: 13px; color: #aaa;">Encontramos el perfil perfecto y el cliente lo contrata en su nómina. Cobramos "Success Fee".</p>
+                    <div class="hook-box">
+                        <span class="hook-label" style="color:var(--b64-yellow)"><i class="fa-solid fa-bullseye"></i> IDEAL PARA:</span>
+                        <ul style="font-size: 12px; color: #ddd; padding-left: 20px; margin: 5px 0;">
+                            <li>Roles estratégicos (Arquitectos, Líderes).</li>
+                            <li>Empresas que quieren retener talento a largo plazo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h2 class="section-title" style="border-color: var(--b64-purple);">2. DICCIONARIO DE PERFILES (¿QUÉ NECESITA EL CLIENTE?)</h2>
+                <p style="margin-bottom: 20px; color: #ccc;">Guía rápida para identificar qué perfil ofrecer según la necesidad del cliente.</p>
+                
+                <div class="sales-grid">
+                    <div style="background: #111; padding: 20px; border-left: 3px solid var(--b64-purple);">
+                        <h4 style="color: #fff; font-size: 18px;">Power Apps Developer</h4>
+                        <p style="font-size: 12px; color: #aaa;">Es el "Constructor". Hace las pantallas, los botones y la lógica visual.</p>
+                        <p class="mono" style="font-size: 12px; color: var(--b64-purple); margin-top: 10px;">SE VENDE CUANDO: "Necesito una app para que mis vendedores registren visitas desde el celular".</p>
+                    </div>
+                    <div style="background: #111; padding: 20px; border-left: 3px solid var(--b64-blue);">
+                        <h4 style="color: #fff; font-size: 18px;">Power Automate Engineer</h4>
+                        <p style="font-size: 12px; color: #aaa;">Es el "Conector". Mueve datos de un lado a otro sin intervención humana.</p>
+                        <p class="mono" style="font-size: 12px; color: var(--b64-blue); margin-top: 10px;">SE VENDE CUANDO: "Pierdo mucho tiempo copiando datos de correos a Excel".</p>
+                    </div>
+                    <div style="background: #111; padding: 20px; border-left: 3px solid var(--b64-yellow);">
+                        <h4 style="color: #fff; font-size: 18px;">Power BI Analyst</h4>
+                        <p style="font-size: 12px; color: #aaa;">Es el "Visualizador". Convierte tablas aburridas en gráficos para decisiones.</p>
+                        <p class="mono" style="font-size: 12px; color: var(--b64-yellow); margin-top: 10px;">SE VENDE CUANDO: "Tengo muchos datos pero no sé qué está pasando en mi negocio hoy".</p>
+                    </div>
+                    <div style="background: #111; padding: 20px; border-left: 3px solid #fff;">
+                        <h4 style="color: #fff; font-size: 18px;">Solution Architect</h4>
+                        <p style="font-size: 12px; color: #aaa;">Es el "Maestro de Obra". Diseña la seguridad, la base de datos y la estrategia.</p>
+                        <p class="mono" style="font-size: 12px; color: #fff; margin-top: 10px;">SE VENDE CUANDO: "Queremos implementar Power Platform en toda la empresa de forma segura".</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h2 class="section-title" style="border-color: var(--b64-yellow);">3. LA VENTAJA FINANCIERA (TU ARGUMENTO DE CIERRE)</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="color: #aaa;">VARIABLE</th>
+                            <th style="color: #ff5555;">RECLUTAMIENTO INTERNO (CLIENTE)</th>
+                            <th style="color: var(--b64-purple); border-bottom: 2px solid var(--b64-purple);">STAFFING BASE 64</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tiempo de Cobertura</strong></td>
+                            <td>45 - 60 Días (Costoso vacío laboral)</td>
+                            <td><span style="color:var(--b64-blue); font-weight:bold;">5 - 7 Días</span> (Talento listo para desplegar)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Validación Técnica</strong></td>
+                            <td>Generalmente hecha por RRHH (No técnico)</td>
+                            <td><span style="color:var(--b64-blue); font-weight:bold;">Hecha por Arquitectos Senior (Live Coding)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Riesgo de Rotación</strong></td>
+                            <td>Si renuncia al mes, pierdes la inversión.</td>
+                            <td><span style="color:var(--b64-blue); font-weight:bold;">Garantía de Reemplazo Inmediato (Sin costo)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carga Prestacional</strong></td>
+                            <td>CTS + Gratificación + Seguro + Liquidación</td>
+                            <td><span style="color:var(--b64-blue); font-weight:bold;">0% (Factura simple por servicios)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curva de Aprendizaje</strong></td>
+                            <td>Lenta (Capacitación a cargo del cliente)</td>
+                            <td><span style="color:var(--b64-blue); font-weight:bold;">Rápida (Perfiles Senior/Semi-Senior Certificados)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="brand-divider">
+        <span class="divider-text">CAMBIO DE ESTRATEGIA // DE PERSONAS A SOLUCIONES</span>
+    </div>
+
+    <section id="axis" class="brand-section">
+        <div class="container">
+            
+            <div style="text-align: center; margin-bottom: 80px; padding-top: 40px;">
+                <h1 style="font-size: 80px; margin-bottom: 10px; letter-spacing: 5px;">AXIS</h1>
+                <p class="mono" style="font-size: 20px; color: var(--axis-teal);">TRANSFORMACIÓN DIGITAL <span class="axis-highlight">SIN FRICCIÓN</span></p>
+                <p style="color: #888; max-width: 600px; margin: 20px auto; font-size: 14px;">
+                    <strong>OBJETIVO:</strong> Crear software a medida, automatizaciones y analítica usando tecnología Low-Code de Microsoft. Más rápido, más seguro, más barato.
+                </p>
+            </div>
+
+            <h2 class="section-title" style="border-color: var(--axis-teal); color: #fff;">1. NIVELES DE SERVICIO</h2>
+            <div class="sales-grid">
+                <div class="sales-card" style="border-left: 1px solid var(--axis-teal);">
+                    <h4 style="color: var(--axis-teal);">NIVEL 1: QUICK WINS (MVP)</h4>
+                    <p style="font-size: 13px; color: #aaa;">Soluciones rápidas para problemas puntuales.</p>
+                    <ul style="font-size: 12px; color: #ccc; padding-left: 20px;">
+                        <li>Tiempo: 2 a 3 Semanas.</li>
+                        <li>Ejemplo: Formulario de asistencia, Aprobación de vacaciones.</li>
+                    </ul>
+                </div>
+                <div class="sales-card" style="border-left: 3px solid var(--axis-teal);">
+                    <h4 style="color: var(--axis-teal);">NIVEL 2: DEPARTAMENTAL</h4>
+                    <p style="font-size: 13px; color: #aaa;">Digitalización de un área completa.</p>
+                    <ul style="font-size: 12px; color: #ccc; padding-left: 20px;">
+                        <li>Tiempo: 1 a 2 Meses.</li>
+                        <li>Ejemplo: Sistema completo de Logística o CRM de Ventas.</li>
+                    </ul>
+                </div>
+                <div class="sales-card" style="border-left: 6px solid var(--axis-teal);">
+                    <h4 style="color: var(--axis-teal);">NIVEL 3: ENTERPRISE</h4>
+                    <p style="font-size: 13px; color: #aaa;">Integración compleja con SAP/Salesforce/Oracle.</p>
+                    <ul style="font-size: 12px; color: #ccc; padding-left: 20px;">
+                        <li>Tiempo: 3+ Meses.</li>
+                        <li>Ejemplo: Portal de Proveedores con IA y Facturación.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h2 class="section-title" style="border-color: var(--axis-teal);">2. ¿POR QUÉ ELEGIR LOW-CODE? (BATALLA TÉCNICA)</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="color: #aaa;">FACTOR</th>
+                            <th style="color: #ff5555;">DESARROLLO TRADICIONAL (.NET/JAVA)</th>
+                            <th style="color: var(--axis-teal); border-bottom: 2px solid var(--axis-teal);">SOLUCIÓN AXIS (POWER PLATFORM)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Velocidad de Entrega</strong></td>
+                            <td>Meses (Requiere configurar servidores, DB, APIs)</td>
+                            <td><span style="color:var(--axis-teal); font-weight:bold;">Semanas (Infraestructura lista por Microsoft)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seguridad</strong></td>
+                            <td>Responsabilidad del desarrollador (Posibles brechas)</td>
+                            <td><span style="color:var(--axis-teal); font-weight:bold;">Heredada de Microsoft 365 (Entra ID)</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Movilidad</strong></td>
+                            <td>Desarrollo iOS + Android por separado ($$$)</td>
+                            <td><span style="color:var(--axis-teal); font-weight:bold;">Nativa en Móvil y Tablet desde el día 1</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mantenimiento</strong></td>
+                            <td>Código complejo, difícil si el programador se va.</td>
+                            <td><span style="color:var(--axis-teal); font-weight:bold;">Visual, fácil de editar y transferir.</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROI (Retorno)</strong></td>
+                            <td>Lento (Costos iniciales altos)</td>
+                            <td><span style="color:var(--axis-teal); font-weight:bold;">Inmediato (Se aprovechan licencias existentes)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h2 class="section-title" style="border-color: #fff;">3. MATRIZ DE VENTAS: ¿A QUIÉN VENDER?</h2>
+                <p style="color: #999; margin-bottom: 30px;">Guía de prospección para vendedores. Encuentra el dolor y ofrece la solución.</p>
+
+                <div class="sales-grid">
+                    
+                    <div class="sales-card" style="border: 1px solid #333;">
+                        <h4 style="color: #fff;"><i class="fa-solid fa-users-gear"></i> RECURSOS HUMANOS</h4>
+                        <div style="margin: 10px 0; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                            <span style="color: #ff5555; font-size: 12px; font-weight: bold;">EL DOLOR:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Procesos de Onboarding lentos, pérdida de documentos de empleados, aprobaciones de vacaciones por email perdido.</p>
+                        </div>
+                        <div>
+                            <span style="color: var(--axis-teal); font-size: 12px; font-weight: bold;">LA SOLUCIÓN AXIS:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">App de Onboarding digital, Portal del Empleado para autogestión de vacaciones, Firma digital.</p>
+                        </div>
+                        <div class="pitch-text">
+                            "¿Cuánto tiempo pierde tu equipo de RRHH persiguiendo firmas y documentos? Podemos automatizar eso en 2 semanas."
+                        </div>
+                    </div>
+
+                    <div class="sales-card" style="border: 1px solid #333;">
+                        <h4 style="color: #fff;"><i class="fa-solid fa-helmet-safety"></i> MANUFACTURA & CAMPO</h4>
+                        <div style="margin: 10px 0; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                            <span style="color: #ff5555; font-size: 12px; font-weight: bold;">EL DOLOR:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Uso de papel para inspecciones de calidad o seguridad (SSOMA). Datos que tardan días en llegar a oficina.</p>
+                        </div>
+                        <div>
+                            <span style="color: var(--axis-teal); font-size: 12px; font-weight: bold;">LA SOLUCIÓN AXIS:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">App móvil Offline (sin internet) para checklists, fotos de incidentes y geolocalización.</p>
+                        </div>
+                        <div class="pitch-text">
+                            "Elimina el papel en obra. Tus inspectores pueden reportar incidentes en tiempo real desde su celular, incluso sin señal."
+                        </div>
+                    </div>
+
+                    <div class="sales-card" style="border: 1px solid #333;">
+                        <h4 style="color: #fff;"><i class="fa-solid fa-truck-fast"></i> LOGÍSTICA & COMPRAS</h4>
+                        <div style="margin: 10px 0; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                            <span style="color: #ff5555; font-size: 12px; font-weight: bold;">EL DOLOR:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Cuellos de botella en aprobaciones de órdenes de compra (OC). Falta de visibilidad de stock real.</p>
+                        </div>
+                        <div>
+                            <span style="color: var(--axis-teal); font-size: 12px; font-weight: bold;">LA SOLUCIÓN AXIS:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Flujo de aprobación multinivel en Teams. Dashboard Power BI de inventarios en vivo.</p>
+                        </div>
+                        <div class="pitch-text">
+                            "Si tu gerente de compras está de viaje, ¿el proceso se detiene? Con nuestra solución aprueba desde el celular en un clic."
+                        </div>
+                    </div>
+
+                    <div class="sales-card" style="border: 1px solid #333;">
+                        <h4 style="color: #fff;"><i class="fa-solid fa-scale-balanced"></i> FINANZAS & LEGAL</h4>
+                        <div style="margin: 10px 0; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                            <span style="color: #ff5555; font-size: 12px; font-weight: bold;">EL DOLOR:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Carga manual de facturas al ERP. Gestión de contratos físicos difícil de rastrear.</p>
+                        </div>
+                        <div>
+                            <span style="color: var(--axis-teal); font-size: 12px; font-weight: bold;">LA SOLUCIÓN AXIS:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Procesamiento Inteligente de Documentos (IDP) con IA para leer facturas PDF automáticamente.</p>
+                        </div>
+                        <div class="pitch-text">
+                            "Deja de teclear facturas. Nuestra IA lee el PDF y mete los datos a tu sistema contable sin errores."
+                        </div>
+                    </div>
+
+                    <div class="sales-card" style="border: 1px solid #333;">
+                        <h4 style="color: #fff;"><i class="fa-solid fa-shop"></i> RETAIL & COMERCIAL</h4>
+                        <div style="margin: 10px 0; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                            <span style="color: #ff5555; font-size: 12px; font-weight: bold;">EL DOLOR:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Supervisores de tienda reportan por WhatsApp (informal). No hay auditoría de exhibiciones.</p>
+                        </div>
+                        <div>
+                            <span style="color: var(--axis-teal); font-size: 12px; font-weight: bold;">LA SOLUCIÓN AXIS:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">App de Auditoría de Tienda ("Store Check") con fotos obligatorias y puntaje automático.</p>
+                        </div>
+                        <div class="pitch-text">
+                            "Convierte el WhatsApp de tus vendedores en datos reales. Controla la exhibición de tus productos en tiempo real."
+                        </div>
+                    </div>
+
+                    <div class="sales-card" style="border: 1px solid #333;">
+                        <h4 style="color: #fff;"><i class="fa-solid fa-graduation-cap"></i> EDUCACIÓN</h4>
+                        <div style="margin: 10px 0; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                            <span style="color: #ff5555; font-size: 12px; font-weight: bold;">EL DOLOR:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Procesos de admisión manuales, seguimiento de alumnos en riesgo de deserción.</p>
+                        </div>
+                        <div>
+                            <span style="color: var(--axis-teal); font-size: 12px; font-weight: bold;">LA SOLUCIÓN AXIS:</span>
+                            <p style="font-size: 13px; color: #ccc; margin: 5px 0;">Portal de Admisión Web, Alertas tempranas de inasistencia a padres/profesores.</p>
+                        </div>
+                        <div class="pitch-text">
+                            "Moderniza la admisión. Un portal web integrado que avisa automáticamente si un alumno falta demasiado."
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; background: rgba(0, 229, 255, 0.05); padding: 30px; border-radius: 8px; border: 1px solid var(--axis-teal);">
+                <h3 style="color: var(--axis-teal); font-size: 20px; margin-bottom: 15px;"><i class="fa-regular fa-comments"></i> PREGUNTAS ROMPEHIELO PARA VENDEDORES</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <p style="color: #fff; font-size: 14px; font-weight: bold;">Para Gerentes de TI:</p>
+                        <ul style="font-size: 13px; color: #ccc; font-style: italic;">
+                            <li>"¿Qué porcentaje de tu backlog actual son requerimientos pequeños que te quitan tiempo?"</li>
+                            <li>"¿Tienes problemas de 'Shadow IT' (usuarios haciendo sus propios Excel/Macros sin control)?"</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: #fff; font-size: 14px; font-weight: bold;">Para Gerentes de Operaciones/Negocio:</p>
+                        <ul style="font-size: 13px; color: #ccc; font-style: italic;">
+                            <li>"¿Cuántas horas a la semana pasa tu equipo copiando y pegando datos entre archivos?"</li>
+                            <li>"¿Qué proceso crítico depende hoy de que una sola persona envíe un correo?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://wa.link/x8i9kd" style="background: var(--axis-teal); color: #000; padding: 15px 40px; text-decoration: none; font-family: 'Orbitron'; font-weight: bold; font-size: 18px; border-radius: 5px; display: inline-block;">
+                    <i class="fa-brands fa-whatsapp"></i> INICIAR CAMPAÑA DE VENTAS
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer style="background: #000; border-top: 1px solid #333; padding: 40px; text-align: center; color: #555; font-size: 12px;">
+        <p class="mono">DOCUMENTO DE CAPACITACIÓN INTERNA & MATERIAL DE APOYO // CONFIDENCIAL 2025</p>
+        <p>Desarrollado para potenciar al equipo comercial de BASE 64 & AXIS</p>
+    </footer>
+
+</body>
+</html>
